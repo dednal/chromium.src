@@ -221,7 +221,6 @@ const char g_dump_msg[] = "upload_file_minidump\"; filename=\"dump\"";
 #if defined(ADDRESS_SANITIZER)
 const char g_log_msg[] = "upload_file_log\"; filename=\"log\"";
 #endif
-const char g_content_type_msg[] = "Content-Type: application/octet-stream";
 
 // MimeWriter manages an iovec for writing MIMEs to a file.
 class MimeWriter {
@@ -365,14 +364,7 @@ void MimeWriter::AddPairDataInChunks(const char* msg_type,
 
 void MimeWriter::AddFileContents(const char* filename_msg, uint8_t* file_data,
                                  size_t file_size) {
-  AddString(g_form_data_msg);
-  AddString(filename_msg);
-  AddString(g_rn);
-  AddString(g_content_type_msg);
-  AddString(g_rn);
-  AddString(g_rn);
   AddItem(file_data, file_size);
-  AddString(g_rn);
 }
 
 void MimeWriter::AddItem(const void* base, size_t size) {
