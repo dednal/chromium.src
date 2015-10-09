@@ -459,6 +459,9 @@ void MessagePumpCFRunLoopBase::PreWaitObserver(CFRunLoopObserverRef observer,
   });
 }
 
+void MessagePumpCFRunLoopBase::PreWaitObserverHook() {
+}
+
 // Called from the run loop.
 // static
 void MessagePumpCFRunLoopBase::PreSourceObserver(CFRunLoopObserverRef observer,
